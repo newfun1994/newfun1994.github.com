@@ -1,2 +1,2 @@
-# newfun1994.github.com
-newfun&amp;&amp;博客
+# newfun1994博客
+newfun.email@qq.com
