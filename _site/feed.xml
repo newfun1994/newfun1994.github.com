@@ -6,9 +6,103 @@
 </description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 10 Mar 2016 18:23:21 +0800</pubDate>
-    <lastBuildDate>Thu, 10 Mar 2016 18:23:21 +0800</lastBuildDate>
+    <pubDate>Thu, 10 Mar 2016 22:37:50 +0800</pubDate>
+    <lastBuildDate>Thu, 10 Mar 2016 22:37:50 +0800</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>React Native IDE之VSCode</title>
+        <description>&lt;p&gt;接触React Native有一段时间了，但是一直都在寻找优秀的好用的IDE，直到发现VSCode
+在这之前使用了Atom，Sublime，WebStorm，还有一款比较期待的IDE： DECO看官网还是比较激动的，现在貌似还没有出来，要邀请别人注册好像才能下载。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/image/20160310/1.gif&quot; alt=&quot;DECO&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;接下来开始介绍并安装VSCode&lt;/p&gt;
+
+&lt;p&gt;为什么要推荐VSCode，针对React Native原因有以下几点&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;不要需要开启xcode直接打开并运行iOS模拟器&lt;/li&gt;
+  &lt;li&gt;启动app时IDE会自己打开nam服务，不用额外打开终端&lt;/li&gt;
+  &lt;li&gt;React Native代码自动补全&lt;/li&gt;
+  &lt;li&gt;可以断点调试，简直炸&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;vscode&quot;&gt;VSCode的安装与使用&lt;/h3&gt;
+
+&lt;p&gt;官网地址：&lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;https://code.visualstudio.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;step1vscode&quot;&gt;step1：下载并安装VSCode&lt;/h4&gt;
+
+&lt;p&gt;解压后直接可以打开使用，无需安装，摒弃了微软一向安装麻烦的特点，这一点的进步值得表扬。&lt;/p&gt;
+
+&lt;p&gt;界面很简洁，暗黑系列的风格&lt;/p&gt;
+
+&lt;p&gt;软件有最近工作区，人性化设计，不用每次都点开目录去寻找文件&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/image/20160310/2.png&quot; alt=&quot;主界面&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;step2react-native-&quot;&gt;step2：安装React Native 插件&lt;/h4&gt;
+&lt;p&gt;打开VSCode 按F1键，输入install选择Install Extension&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/image/20160310/3.png&quot; alt=&quot;安装插件&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;稍等片刻，不要切换软件，不然会消失。&lt;/p&gt;
+
+&lt;p&gt;出现如图界面找到react native tools安装，或者直接在后面输入react搜索点击&lt;img src=&quot;http://127.0.0.1:4000/image/20160310/download.png&quot; alt=&quot;download&quot; /&gt;安装&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/image/20160310/4.png&quot; alt=&quot;安装插件&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;安装成功后手动重启软件，打开ios.index.js文件看右下角选择JavaScript，看看是否如图&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/image/20160310/5.png&quot; alt=&quot;salsa&quot; /&gt;出现salsa标志，ok安装完成。&lt;/p&gt;
+
+&lt;h4 id=&quot;step3&quot;&gt;step3：调试环境配置&lt;/h4&gt;
+
+&lt;p&gt;点击左侧&lt;img src=&quot;http://127.0.0.1:4000/image/20160310/6.png&quot; alt=&quot;debug&quot; /&gt;按钮，点击左上角&lt;img src=&quot;http://127.0.0.1:4000/image/20160310/7.png&quot; alt=&quot;setting&quot; /&gt;选择React Native&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/image/20160310/8.png&quot; alt=&quot;reactantive&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;如果不幸选错，不要紧张，打开工程目录，删除.vscode/launch.json 即可重新选择&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/image/20160310/9.png&quot; alt=&quot;launch&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/image/20160310/10.png&quot; alt=&quot;debugiOS&quot; /&gt;选择Debug的手机系统，到此环境的配置已经全部结束。&lt;/p&gt;
+
+&lt;h4 id=&quot;step4&quot;&gt;step4：运行工程&lt;/h4&gt;
+
+&lt;p&gt;按F1键 输入iOS选择Run iOS&lt;/p&gt;
+
+&lt;p&gt;IDE会自己开启npm服务并打开iOS模拟器
+接下来就可以愉快地的coding啦&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;注意：编译后会在iOS工程目录下会生产build目录，有100+M&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;step5debug&quot;&gt;step5：Debug&lt;/h4&gt;
+
+&lt;p&gt;点击&lt;img src=&quot;http://127.0.0.1:4000/image/20160310/6.png&quot; alt=&quot;Debug&quot; /&gt;进入Debug模式，点击&lt;img src=&quot;http://127.0.0.1:4000/image/20160310/12.png&quot; alt=&quot;run&quot; /&gt;开始调试&lt;/p&gt;
+
+&lt;p&gt;直接打断点，鼠标悬停，数据直接显示&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;注意：目前发现有时候无法进入Debug模式，不行就重新Debug&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/image/20160310/13.png&quot; alt=&quot;BreakPoint&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;小编还会坚定不移的寻找优秀的IDE。。。&lt;/p&gt;
+
+&lt;p&gt;文笔不好，给您带来不便，尽请谅解，欢迎交流。邮箱在下面哦。&lt;/p&gt;
+
+&lt;p&gt;–newfun.上海.2016年3月10日&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 10 Mar 2016 15:59:06 +0800</pubDate>
+        <link>http://yourdomain.com/react-native/2016/03/10/React-Native-IDE%E4%B9%8BVSCode.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/react-native/2016/03/10/React-Native-IDE%E4%B9%8BVSCode.html</guid>
+        
+        
+        <category>React-Native</category>
+        
+      </item>
     
       <item>
         <title>写给大学生</title>

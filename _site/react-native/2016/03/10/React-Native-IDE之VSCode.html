@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Newfun</title>
-  <meta name="description" content="为什么要写博客,梦想、技术、热爱。或许是不想让自己闲着,我怕闲下来手就犯贱,脸会不自觉的贴在镜子上, 手会不自觉的贴在脸上挤痘痘,94年正青春。</br>专注于React Native、iOS开发，欢迎交流。 </br>--newfun.上海.2016年3月6日
-">
+  <title>React Native IDE之VSCode</title>
+  <meta name="description" content="接触React Native有一段时间了，但是一直都在寻找优秀的好用的IDE，直到发现VSCode在这之前使用了Atom，Sublime，WebStorm，还有一款比较期待的IDE： DECO看官网还是比较激动的，现在貌似还没有出来，要邀请别人注册好像才能下载。">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://yourdomain.com/">
+  <link rel="canonical" href="http://yourdomain.com/react-native/2016/03/10/React-Native-IDE%E4%B9%8BVSCode.html">
   <link rel="alternate" type="application/rss+xml" title="Newfun" href="http://yourdomain.com/feed.xml">
 </head>
 
@@ -55,31 +54,100 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <h1 class="page-heading">Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">React Native IDE之VSCode</h1>
+    <p class="post-meta"><time datetime="2016-03-10T15:59:06+08:00" itemprop="datePublished">Mar 10, 2016</time></p>
+  </header>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">Mar 10, 2016</span>
+  <div class="post-content" itemprop="articleBody">
+    <p>接触React Native有一段时间了，但是一直都在寻找优秀的好用的IDE，直到发现VSCode
+在这之前使用了Atom，Sublime，WebStorm，还有一款比较期待的IDE： DECO看官网还是比较激动的，现在貌似还没有出来，要邀请别人注册好像才能下载。</p>
 
-        <h2>
-          <a class="post-link" href="/react-native/2016/03/10/React-Native-IDE%E4%B9%8BVSCode.html">React Native IDE之VSCode</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Mar 6, 2016</span>
+<p><img src="http://127.0.0.1:4000/image/20160310/1.gif" alt="DECO" /></p>
 
-        <h2>
-          <a class="post-link" href="/%E9%9A%8F%E7%AC%94/2016/03/06/%E5%86%99%E7%BB%99%E5%A4%A7%E5%AD%A6%E7%94%9F.html">写给大学生</a>
-        </h2>
-      </li>
-    
-  </ul>
+<p>接下来开始介绍并安装VSCode</p>
 
-</div>
+<p>为什么要推荐VSCode，针对React Native原因有以下几点</p>
+
+<ol>
+  <li>不要需要开启xcode直接打开并运行iOS模拟器</li>
+  <li>启动app时IDE会自己打开nam服务，不用额外打开终端</li>
+  <li>React Native代码自动补全</li>
+  <li>可以断点调试，简直炸</li>
+</ol>
+
+<h3 id="vscode">VSCode的安装与使用</h3>
+
+<p>官网地址：<a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></p>
+
+<h4 id="step1vscode">step1：下载并安装VSCode</h4>
+
+<p>解压后直接可以打开使用，无需安装，摒弃了微软一向安装麻烦的特点，这一点的进步值得表扬。</p>
+
+<p>界面很简洁，暗黑系列的风格</p>
+
+<p>软件有最近工作区，人性化设计，不用每次都点开目录去寻找文件</p>
+
+<p><img src="http://127.0.0.1:4000/image/20160310/2.png" alt="主界面" /></p>
+
+<h4 id="step2react-native-">step2：安装React Native 插件</h4>
+<p>打开VSCode 按F1键，输入install选择Install Extension</p>
+
+<p><img src="http://127.0.0.1:4000/image/20160310/3.png" alt="安装插件" /></p>
+
+<p>稍等片刻，不要切换软件，不然会消失。</p>
+
+<p>出现如图界面找到react native tools安装，或者直接在后面输入react搜索点击<img src="http://127.0.0.1:4000/image/20160310/download.png" alt="download" />安装</p>
+
+<p><img src="http://127.0.0.1:4000/image/20160310/4.png" alt="安装插件" /></p>
+
+<p>安装成功后手动重启软件，打开ios.index.js文件看右下角选择JavaScript，看看是否如图</p>
+
+<p><img src="http://127.0.0.1:4000/image/20160310/5.png" alt="salsa" />出现salsa标志，ok安装完成。</p>
+
+<h4 id="step3">step3：调试环境配置</h4>
+
+<p>点击左侧<img src="http://127.0.0.1:4000/image/20160310/6.png" alt="debug" />按钮，点击左上角<img src="http://127.0.0.1:4000/image/20160310/7.png" alt="setting" />选择React Native</p>
+
+<p><img src="http://127.0.0.1:4000/image/20160310/8.png" alt="reactantive" /></p>
+
+<p>如果不幸选错，不要紧张，打开工程目录，删除.vscode/launch.json 即可重新选择</p>
+
+<p><img src="http://127.0.0.1:4000/image/20160310/9.png" alt="launch" /></p>
+
+<p><img src="http://127.0.0.1:4000/image/20160310/10.png" alt="debugiOS" />选择Debug的手机系统，到此环境的配置已经全部结束。</p>
+
+<h4 id="step4">step4：运行工程</h4>
+
+<p>按F1键 输入iOS选择Run iOS</p>
+
+<p>IDE会自己开启npm服务并打开iOS模拟器
+接下来就可以愉快地的coding啦</p>
+
+<p><code class="highlighter-rouge">注意：编译后会在iOS工程目录下会生产build目录，有100+M</code></p>
+
+<h4 id="step5debug">step5：Debug</h4>
+
+<p>点击<img src="http://127.0.0.1:4000/image/20160310/6.png" alt="Debug" />进入Debug模式，点击<img src="http://127.0.0.1:4000/image/20160310/12.png" alt="run" />开始调试</p>
+
+<p>直接打断点，鼠标悬停，数据直接显示</p>
+
+<p><code class="highlighter-rouge">注意：目前发现有时候无法进入Debug模式，不行就重新Debug</code></p>
+
+<p><img src="http://127.0.0.1:4000/image/20160310/13.png" alt="BreakPoint" /></p>
+
+<p>小编还会坚定不移的寻找优秀的IDE。。。</p>
+
+<p>文笔不好，给您带来不便，尽请谅解，欢迎交流。邮箱在下面哦。</p>
+
+<p>–newfun.上海.2016年3月10日</p>
+
+
+  </div>
+
+</article>
 
       </div>
     </div>

@@ -16,6 +16,6 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://yourdomain.com" # the base hostname & protocol for your site
 sina_username:  newfun
 github_username:  newfun1994
-
+image: "http://127.0.0.1:4000/image"
 # Build settings
 markdown: kramdown
