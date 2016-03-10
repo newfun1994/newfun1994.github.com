@@ -6,56 +6,9 @@
 </description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 09 Mar 2016 20:28:35 +0800</pubDate>
-    <lastBuildDate>Wed, 09 Mar 2016 20:28:35 +0800</lastBuildDate>
+    <pubDate>Thu, 10 Mar 2016 18:23:21 +0800</pubDate>
+    <lastBuildDate>Thu, 10 Mar 2016 18:23:21 +0800</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
-    
-      <item>
-        <title>React Native IDE之VScode</title>
-        <description>&lt;p&gt;这是我的第一篇博客，撰写这篇文章的时候我还没有毕业，写这篇文章的目的是给那些可爱的即将毕业成为程序猿(媛)
-的学弟学妹们一些过来人的建议。&lt;/p&gt;
-
-&lt;p&gt;在我大一的时候，在空间里面看到有很多同学发表大学好无聊，我认为这不是一个正常的状态，大学是你进入社会的最后的
-一个阶段，如果你在这段时间里面不好好奋斗，社会凭什么要你,看脸？拼爹？轮不到你吧。不要把过多的时间浪费在游戏
-上，尤其是国内的游戏，给人带来的不是正确的价值观，游戏可以玩。当然最理想的状态是，你在专业方面很优秀，同时在
-游戏上也很卓越，这走到哪里都会为你加分，如果专业知识不足，那我认为你还是不要浪费这仅有的四年时间。四年下来我
-不敢发誓我没有浪费时间，但是我可以保证比80%的人勤奋(当然不是在学科上，这是我遗憾的地方)。&lt;/p&gt;
-
-&lt;p&gt;先谈谈我遗憾的一些地方，希望你们不要学我这些不好的方面。首先是我前面刚刚提到的学科，什么数据结构、离散数学、
-数据库原理、计算机组成原理、汇编、操作系统( 这个学的还可以 )都没有好好学，的确我承认这些课普遍比较无聊(也许
-是中国的教育方式，但是不能怪第三方因素，得在自己身上找原因，还是当初没有好好重视)，考试都是靠一周的突击，但
-是在我找工作的时候，我发现公司笔试面试专门考这些东西，于是在找工作的期间又狠狠的恶补了一下。四年下来我学了很
-多东西，很杂，很不系统，课上学的&lt;code class=&quot;highlighter-rouge&quot;&gt;C&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;C++&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;HTML&lt;/code&gt;以及自学的&lt;code class=&quot;highlighter-rouge&quot;&gt;PHP&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;MySQL&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;android&lt;/code&gt;、
-&lt;code class=&quot;highlighter-rouge&quot;&gt;Objective-C&lt;/code&gt;甚至连&lt;code class=&quot;highlighter-rouge&quot;&gt;PhotoShop&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;After Effects&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;会声会影&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;Prezi&lt;/code&gt;等软件都玩的很溜。这些许许多多
-的原因加起来也许让我没有进入BAT（也有可能是天赋上的问题吧，我并没有表现出很出色的编程能力），阿里巴巴的笔试
-真的是被鄙视了，IBM的面试也是被狠狠的鄙视了，这时候你才发现学好学科的重要性。也许是老天的眷顾，感谢，最终还
-是进入了世界100强的公司。已经深夜了，下次再聊吧。&lt;/p&gt;
-
-&lt;p&gt;这段时间在看《黑客与画家》，里面有一段话是这样写的：&lt;/p&gt;
-
-&lt;p&gt;许多人20出头的时感到非常的困惑和压抑。大学生活很有趣，可是已经过时了，上班的日子为什么会差距这么大？不要搞糊
-涂了，你现在已经从顾客变成了仆人。在这种新的生活中获得乐趣是可能的。不过，你首先需要入门，门口的牌子写着“闲人
-勿进”。这种转变是一种冲击，如果你还不赶快意识到这一点，事情将变得更糟。&lt;/p&gt;
-
-&lt;p&gt;这一段话写的&lt;code class=&quot;highlighter-rouge&quot;&gt;正青春&lt;/code&gt;，我周围就有很多同学正是出现上面所说的困惑于压抑，有的同学意识到的比较早，于是付出了行动，
-并坚持着，最总也获得了应有的回报。有的同学也意识到了，却一如既往的过着顾客的生活。我相信每个人都考虑过自己的
-未来，当你意识到这一点的时候，你是否为自己做出改变，至于付出了多少，坚持了多久这就看你想要得到多少。“再牛逼的
-梦想,也抵不住傻逼似得坚持”(耐人寻味，不合常理)。但是失败往往是因为放弃的太早。在&lt;code class=&quot;highlighter-rouge&quot;&gt;正青春&lt;/code&gt;的时候不要让自己过得
-太安逸。&lt;/p&gt;
-
-&lt;p&gt;本篇文章持续更新。文笔不好，给您带来不便，尽请谅解，欢迎交流。邮箱在下面哦。&lt;/p&gt;
-
-&lt;p&gt;–newfun.上海.2016年3月6日&lt;/p&gt;
-
-</description>
-        <pubDate>Tue, 08 Mar 2016 21:36:06 +0800</pubDate>
-        <link>http://yourdomain.com/react-native/2016/03/08/React-Native-IDE%E4%B9%8BVSCode.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/react-native/2016/03/08/React-Native-IDE%E4%B9%8BVSCode.html</guid>
-        
-        
-        <category>React-Native</category>
-        
-      </item>
     
       <item>
         <title>写给大学生</title>
@@ -80,9 +33,11 @@
 
 &lt;p&gt;这段时间在看《黑客与画家》，里面有一段话是这样写的：&lt;/p&gt;
 
-&lt;p&gt;许多人20出头的时感到非常的困惑和压抑。大学生活很有趣，可是已经过时了，上班的日子为什么会差距这么大？不要搞糊
+&lt;blockquote&gt;
+  &lt;p&gt;许多人20出头的时感到非常的困惑和压抑。大学生活很有趣，可是已经过时了，上班的日子为什么会差距这么大？不要搞糊
 涂了，你现在已经从顾客变成了仆人。在这种新的生活中获得乐趣是可能的。不过，你首先需要入门，门口的牌子写着“闲人
 勿进”。这种转变是一种冲击，如果你还不赶快意识到这一点，事情将变得更糟。&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;这一段话写的&lt;code class=&quot;highlighter-rouge&quot;&gt;正青春&lt;/code&gt;，我周围就有很多同学正是出现上面所说的困惑于压抑，有的同学意识到的比较早，于是付出了行动，
 并坚持着，最总也获得了应有的回报。有的同学也意识到了，却一如既往的过着顾客的生活。我相信每个人都考虑过自己的
