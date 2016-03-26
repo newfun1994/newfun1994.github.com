@@ -166,7 +166,7 @@ categories: React-Native
 接下来进行网络请求，通过`TouchableOpacity` `onPress`属性，调用方法
 `onPress={() => this.fetchData() }`
 
-	//首先各个内容默认值
+	//首先各个内容默认值,不设置默认值，刚打开的界面会不美观
 	constructor(props) {
 	  super(props);
 	  this.state = {
@@ -178,9 +178,8 @@ categories: React-Native
 	  };
 	}
 	
-	//网络交互
+	//网络交互百度APIStore的提供的查询天气接口
 	var REQUEST_URL = 'https://apis.baidu.com/apistore/weatherservice/cityname?cityname=';
-	
 	fetchData() {
 	  fetch(REQUEST_URL + this.state.cityName, {
 	    method: 'GET',
@@ -190,17 +189,20 @@ categories: React-Native
 	  })
 	    .then((response) => response.json())
 	    .then((responseData) => {
-	      this.setState({
-	        weather: responseData.retData.weather,
-	        nowTemp: responseData.retData.temp,
-	        minTemp: responseData.retData.l_tmp,
-	        maxTemp: responseData.retData.h_tmp,
-	      });
+	      if (responseData.errNum == 0) {
+	        this.setState({
+	          weather: responseData.retData.weather,
+	          nowTemp: responseData.retData.temp,
+	          minTemp: responseData.retData.l_tmp,
+	          maxTemp: responseData.retData.h_tmp,
+	        });
+	      } else { alert('输入有误!'); }
 	    })
 	    .done();
-	}
-	
-这里调用百度APIStore的一个接口
+	}	
+	  
+`fetch`完成网络请求后`.then()`会将返回数据赋值给`response`通过箭头函数`=>`执行`response.json()`方法，再将json对象赋值给`responseData`,然后进行后续取值操作。最后通过`setState`来修改相应的值，`setState`执行完成后会重新调用`render()`方法，由此来刷新界面。
+
 
 
 未完待续，code在 [React-Native-Example](https://github.com/newfun1994/React-Native-Example)
