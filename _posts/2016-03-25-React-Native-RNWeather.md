@@ -9,7 +9,7 @@ categories: React-Native
 
 实现效果
 
-![实现效果]({{ site.image }}/20160326/img.png)
+![实现效果]({{ site.image }}/20160325/img.png)
 
 技术点：
 
