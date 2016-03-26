@@ -6,16 +6,237 @@
 </description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 10 Mar 2016 22:37:50 +0800</pubDate>
-    <lastBuildDate>Thu, 10 Mar 2016 22:37:50 +0800</lastBuildDate>
+    <pubDate>Sat, 26 Mar 2016 14:48:33 +0800</pubDate>
+    <lastBuildDate>Sat, 26 Mar 2016 14:48:33 +0800</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>React Native 天气查询</title>
+        <description>&lt;h3 id=&quot;section&quot;&gt;天气查询&lt;/h3&gt;
+
+&lt;p&gt;实现效果&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://newfun1994.github.io/image/20160326/img.png&quot; alt=&quot;实现效果&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;技术点：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;http请求&lt;/li&gt;
+  &lt;li&gt;自定义字体&lt;/li&gt;
+  &lt;li&gt;NavigatorIOS&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;本文主要介绍如何使用React-Native实现一个查询天气的小demo&lt;/p&gt;
+
+&lt;p&gt;首先创建工程 &lt;code class=&quot;highlighter-rouge&quot;&gt;react-native init RNWeather&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;环境还没搭建的请自行谷歌，这里不多做介绍&lt;/p&gt;
+
+&lt;p&gt;应为我们要使用到&lt;code class=&quot;highlighter-rouge&quot;&gt;NavigatorIOS&lt;/code&gt;所以index.ios.js作为工程的入口，虽然整个工程就两个文件。&lt;/p&gt;
+
+&lt;p&gt;创建查询天气文件&lt;code class=&quot;highlighter-rouge&quot;&gt;weatherView.js&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;并在index.ios.js里面先导入&lt;code class=&quot;highlighter-rouge&quot;&gt;weatherView.js&lt;/code&gt;文件&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;import Index from &#39;./weatherView&#39;;&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//index.ios.js
+class RNWeather extends Component {
+  render() {
+    return (
+      &amp;lt;NavigatorIOS
+        style={styles.container}
+        initialRoute=/&amp;gt;
+    );
+  }
+}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});	
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;注意:&lt;/code&gt;用NavigatorIOS一定要设置&lt;code class=&quot;highlighter-rouge&quot;&gt;style={ {flex: 1} }&lt;/code&gt;, 否则不会显示任何内容&lt;/p&gt;
+
+&lt;p&gt;接下来构建&lt;code class=&quot;highlighter-rouge&quot;&gt;weatherView.js&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;列举一下所需要的基本控件&lt;code class=&quot;highlighter-rouge&quot;&gt;Text&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;TextInput&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;TouchableOpacity&lt;/code&gt;(按钮)&lt;/p&gt;
+
+&lt;p&gt;下面开始布局，关于布局，react native里面只支持横向布局和纵向布局(默认)，这两种组合起来基本可以实现大部分app的页面&lt;/p&gt;
+
+&lt;p&gt;查询天气的界面主要分为两个大部分，第一部分是输入框和按钮，第二部分是显示天气状况和温度，这两个部分是采用横向布局&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//整体布局
+&amp;lt;View style={styles.container}&amp;gt;
+  ...
+&amp;lt;/View&amp;gt;
+//样式
+const styles = StyleSheet.create({
+  container: {
+  marginTop: 65,
+  padding: 8,
+  },
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;整体布局设置&lt;code class=&quot;highlighter-rouge&quot;&gt;marginTop: 65&lt;/code&gt;否则会被标题栏挡住64像素内容&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//searchBar搜索框
+&amp;lt;View style={styles.searchBar}&amp;gt;
+  &amp;lt;TextInput
+    style={styles.cityNameInput}
+    onChangeText={(cityName) =&amp;gt; this.setState({ cityName }) }
+    value={this.state.cityName}
+    clearButtonMode=&#39;while-editing&#39;
+    placeholder=&#39;请输入城市名称&#39;
+    /&amp;gt;
+  &amp;lt;TouchableOpacity style={styles.button}
+    onPress={() =&amp;gt; this.fetchData() }&amp;gt;
+    &amp;lt;Text style={styles.buttonText}&amp;gt;
+      查询
+    &amp;lt;/Text&amp;gt;
+  &amp;lt;/TouchableOpacity&amp;gt;
+&amp;lt;/View&amp;gt;  
+
+//样式
+  searchBar: {
+    height: 30,
+    flexDirection: &#39;row&#39;,
+  },
+  cityNameInput: {
+	height: 30,
+	flex: 9,
+	borderColor: &#39;#00BFFF&#39;,
+	borderWidth: 1,
+	paddingLeft: 6,
+  },
+  button: {
+    height: 30,
+    flex: 1,
+    backgroundColor: &#39;#00BFFF&#39;,
+    justifyContent: &#39;center&#39;
+  },
+  buttonText: {
+    fontSize: 14,
+    color: &#39;#FFFFFF&#39;,
+    alignSelf: &#39;center&#39;
+  },
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;横向布局设置&lt;code class=&quot;highlighter-rouge&quot;&gt;flexDirection: &#39;row&#39;&lt;/code&gt;即可，通过&lt;code class=&quot;highlighter-rouge&quot;&gt;flex&lt;/code&gt;设置视图比例&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//weatherView天气状况和温度
+&amp;lt;View style={styles.weatherView}&amp;gt;
+ &amp;lt;View style={styles.weatherLeftView}&amp;gt;
+   &amp;lt;Text style={styles.weatherText}&amp;gt;
+     {this.state.weather}
+   &amp;lt;/Text&amp;gt;
+ &amp;lt;/View&amp;gt;
+ &amp;lt;View style={styles.weatherRightView}&amp;gt;
+   &amp;lt;Text style={styles.weatherTemp}&amp;gt;
+     当前温度：{this.state.nowTemp}{&#39;\n&#39;}
+     最低温度：{this.state.minTemp}{&#39;\n&#39;}
+     最高温度：{this.state.maxTemp}
+   &amp;lt;/Text&amp;gt;
+ &amp;lt;/View&amp;gt;
+&amp;lt;/View&amp;gt;
+
+//样式
+weatherView: {
+  height: 160,
+  marginTop: 10,
+  flexDirection: &#39;row&#39;,
+  },
+weatherLeftView: {
+  flex: 1,
+  justifyContent: &#39;center&#39;,
+  alignItems: &#39;center&#39;,
+  backgroundColor: &#39;#ffffcc&#39;,
+},
+weatherRightView: {
+  flex: 1,
+  justifyContent: &#39;center&#39;,
+  alignItems: &#39;center&#39;,
+  backgroundColor: &#39;#ffccff&#39;,
+},
+weatherText: {
+  fontSize: 40,
+  fontFamily: &#39;MF LiHei (Noncommercial)&#39;,
+},
+weatherTemp: {
+  fontFamily: &#39;MF LiHei (Noncommercial)&#39;,
+  fontSize: 20,
+},
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;布局到此就结束了&lt;/p&gt;
+
+&lt;p&gt;接下来进行网络请求，通过&lt;code class=&quot;highlighter-rouge&quot;&gt;TouchableOpacity&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;onPress&lt;/code&gt;属性，调用方法
+&lt;code class=&quot;highlighter-rouge&quot;&gt;onPress={() =&amp;gt; this.fetchData() }&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//首先各个内容默认值
+constructor(props) {
+  super(props);
+  this.state = {
+    weather: &#39;天气&#39;,
+    nowTemp: 0,
+    maxTemp: 0,
+    minTemp: 0,
+    cityName: &#39;上海&#39;,
+  };
+}
+
+//网络交互
+var REQUEST_URL = &#39;https://apis.baidu.com/apistore/weatherservice/cityname?cityname=&#39;;
+
+fetchData() {
+  fetch(REQUEST_URL + this.state.cityName, {
+    method: &#39;GET&#39;,
+    headers: {
+      &#39;apikey&#39;: &#39;75f2768bec9b29f46b3104586e1a724b&#39;
+    }
+  })
+    .then((response) =&amp;gt; response.json())
+    .then((responseData) =&amp;gt; {
+      this.setState({
+        weather: responseData.retData.weather,
+        nowTemp: responseData.retData.temp,
+        minTemp: responseData.retData.l_tmp,
+        maxTemp: responseData.retData.h_tmp,
+      });
+    })
+    .done();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这里调用百度APIStore的一个接口&lt;/p&gt;
+
+&lt;p&gt;未完待续，code在 &lt;a href=&quot;https://github.com/newfun1994/React-Native-Example&quot;&gt;React-Native-Example&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;–newfun.上海.2016年3月25日&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 25 Mar 2016 07:07:06 +0800</pubDate>
+        <link>http://yourdomain.com/react-native/2016/03/25/React-Native-RNWeather.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/react-native/2016/03/25/React-Native-RNWeather.html</guid>
+        
+        
+        <category>React-Native</category>
+        
+      </item>
     
       <item>
         <title>React Native IDE之VSCode</title>
         <description>&lt;p&gt;接触React Native有一段时间了，但是一直都在寻找优秀的好用的IDE，直到发现VSCode
 在这之前使用了Atom，Sublime，WebStorm，还有一款比较期待的IDE： DECO看官网还是比较激动的，现在貌似还没有出来，要邀请别人注册好像才能下载。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/image/20160310/1.gif&quot; alt=&quot;DECO&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://newfun1994.github.io/image/20160310/1.gif&quot; alt=&quot;DECO&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;接下来开始介绍并安装VSCode&lt;/p&gt;
 
@@ -40,34 +261,34 @@
 
 &lt;p&gt;软件有最近工作区，人性化设计，不用每次都点开目录去寻找文件&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/image/20160310/2.png&quot; alt=&quot;主界面&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://newfun1994.github.io/image/20160310/2.png&quot; alt=&quot;主界面&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;step2react-native-&quot;&gt;step2：安装React Native 插件&lt;/h4&gt;
 &lt;p&gt;打开VSCode 按F1键，输入install选择Install Extension&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/image/20160310/3.png&quot; alt=&quot;安装插件&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://newfun1994.github.io/image/20160310/3.png&quot; alt=&quot;安装插件&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;稍等片刻，不要切换软件，不然会消失。&lt;/p&gt;
 
-&lt;p&gt;出现如图界面找到react native tools安装，或者直接在后面输入react搜索点击&lt;img src=&quot;http://127.0.0.1:4000/image/20160310/download.png&quot; alt=&quot;download&quot; /&gt;安装&lt;/p&gt;
+&lt;p&gt;出现如图界面找到react native tools安装，或者直接在后面输入react搜索点击&lt;img src=&quot;http://newfun1994.github.io/image/20160310/download.png&quot; alt=&quot;download&quot; /&gt;安装&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/image/20160310/4.png&quot; alt=&quot;安装插件&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://newfun1994.github.io/image/20160310/4.png&quot; alt=&quot;安装插件&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;安装成功后手动重启软件，打开ios.index.js文件看右下角选择JavaScript，看看是否如图&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/image/20160310/5.png&quot; alt=&quot;salsa&quot; /&gt;出现salsa标志，ok安装完成。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://newfun1994.github.io/image/20160310/5.png&quot; alt=&quot;salsa&quot; /&gt;出现salsa标志，ok安装完成。&lt;/p&gt;
 
 &lt;h4 id=&quot;step3&quot;&gt;step3：调试环境配置&lt;/h4&gt;
 
-&lt;p&gt;点击左侧&lt;img src=&quot;http://127.0.0.1:4000/image/20160310/6.png&quot; alt=&quot;debug&quot; /&gt;按钮，点击左上角&lt;img src=&quot;http://127.0.0.1:4000/image/20160310/7.png&quot; alt=&quot;setting&quot; /&gt;选择React Native&lt;/p&gt;
+&lt;p&gt;点击左侧&lt;img src=&quot;http://newfun1994.github.io/image/20160310/6.png&quot; alt=&quot;debug&quot; /&gt;按钮，点击左上角&lt;img src=&quot;http://newfun1994.github.io/image/20160310/7.png&quot; alt=&quot;setting&quot; /&gt;选择React Native&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/image/20160310/8.png&quot; alt=&quot;reactantive&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://newfun1994.github.io/image/20160310/8.png&quot; alt=&quot;reactantive&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;如果不幸选错，不要紧张，打开工程目录，删除.vscode/launch.json 即可重新选择&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/image/20160310/9.png&quot; alt=&quot;launch&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://newfun1994.github.io/image/20160310/9.png&quot; alt=&quot;launch&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/image/20160310/10.png&quot; alt=&quot;debugiOS&quot; /&gt;选择Debug的手机系统，到此环境的配置已经全部结束。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://newfun1994.github.io/image/20160310/10.png&quot; alt=&quot;debugiOS&quot; /&gt;选择Debug的手机系统，到此环境的配置已经全部结束。&lt;/p&gt;
 
 &lt;h4 id=&quot;step4&quot;&gt;step4：运行工程&lt;/h4&gt;
 
@@ -80,13 +301,13 @@
 
 &lt;h4 id=&quot;step5debug&quot;&gt;step5：Debug&lt;/h4&gt;
 
-&lt;p&gt;点击&lt;img src=&quot;http://127.0.0.1:4000/image/20160310/6.png&quot; alt=&quot;Debug&quot; /&gt;进入Debug模式，点击&lt;img src=&quot;http://127.0.0.1:4000/image/20160310/12.png&quot; alt=&quot;run&quot; /&gt;开始调试&lt;/p&gt;
+&lt;p&gt;点击&lt;img src=&quot;http://newfun1994.github.io/image/20160310/6.png&quot; alt=&quot;Debug&quot; /&gt;进入Debug模式，点击&lt;img src=&quot;http://newfun1994.github.io/image/20160310/12.png&quot; alt=&quot;run&quot; /&gt;开始调试&lt;/p&gt;
 
 &lt;p&gt;直接打断点，鼠标悬停，数据直接显示&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;注意：目前发现有时候无法进入Debug模式，不行就重新Debug&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/image/20160310/13.png&quot; alt=&quot;BreakPoint&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://newfun1994.github.io/image/20160310/13.png&quot; alt=&quot;BreakPoint&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;小编还会坚定不移的寻找优秀的IDE。。。&lt;/p&gt;
 
