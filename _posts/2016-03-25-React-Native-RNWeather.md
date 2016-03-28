@@ -23,6 +23,8 @@ categories: React-Native
 
 环境还没搭建的请自行谷歌，这里不多做介绍
 
+#### NavigatorIOS
+
 应为我们要使用到`NavigatorIOS`所以index.ios.js作为工程的入口，虽然整个工程就两个文件。
 
 创建查询天气文件`weatherView.js`
@@ -163,6 +165,8 @@ categories: React-Native
  
 布局到此就结束了
 
+#### http请求
+
 接下来进行网络请求，通过`TouchableOpacity` `onPress`属性，调用方法
 `onPress={() => this.fetchData() }`
 
@@ -203,9 +207,64 @@ categories: React-Native
 	  
 `fetch`完成网络请求后`.then()`会将返回数据赋值给`response`通过箭头函数`=>`执行`response.json()`方法，再将json对象赋值给`responseData`,然后进行后续取值操作。最后通过`setState`来修改相应的值，`setState`执行完成后会重新调用`render()`方法，由此来刷新界面。
 
+#### 自定义字体
+ 自定义字体在iOS上实现还是比较简单的，和一般的实现方法相同。
+ 
+ 1.首先将字体加入到项目中
+ 
+ ![1]({{ site.image }}/20160325/1.jpg)
+
+ 
+ 2.打开Build Phases下的Copy Bundle Resources确定一下刚刚加入到项目里面的字体在这里面，否则请手动添加进去
+ 
+ ![2]({{ site.image }}/20160325/2.jpg)
+
+ 
+ 3.打开Info.plist文件 添加一项Fonts provided by application
+
+将字体文件名加入到这个数组里
+
+![3]({{ site.image }}/20160325/3.jpg)
 
 
-未完待续，code在 [React-Native-Example](https://github.com/newfun1994/React-Native-Example)
+4.打印出系统所有的字体名称来确定字体名称，字体名称不是字体文件名
+
+通过以下代码可以打印出所有字体
+
+	NSArray *familyNames = [UIFont familyNames];  
+	for(NSString *familyName in familyNames)  
+	{  
+	    NSLog(@"%@", familyName);  
+	    NSArray *fontNames = [UIFont fontNamesForFamilyName:familyName];  
+	    for(NSString *fontName in fontNames)  
+	    {  
+	        NSLog(@"\t%@", fontName);  
+	    }  
+	} 
+ 
+控制台字体太多，找不到，可以先在mac Finder下双击字体文件，不是在xcode里
+
+![4]({{ site.image }}/20160325/4.jpg)
+
+
+通过标题就可以迅速定位
+
+找到你所使用的字体，在当前字体名下的字体都可以使用
+
+![5]({{ site.image }}/20160325/5.jpg)
+
+
+	//js
+	weatherTemp: {
+	  fontFamily: 'MF LiHei (Noncommercial)',
+	  fontSize: 20,
+	}
+	
+	//oc
+	[UIFont fontWithName:@"MF LiHei (Noncommercial)" size:20];
+
+
+源码请见 [React-Native-Example](https://github.com/newfun1994/React-Native-Example)
 
 
 
