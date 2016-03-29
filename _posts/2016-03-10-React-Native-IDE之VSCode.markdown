@@ -47,6 +47,8 @@ categories: React-Native
 
 ![salsa]({{ site.image }}/20160310/5.png)出现salsa标志，ok安装完成。
 
+现在vscode更新后标志变成这样了![]({{ site.image }}/20160310/5.1.png)
+
 #### step3：调试环境配置
 
 点击左侧![debug]({{ site.image }}/20160310/6.png)按钮，点击左上角![setting]({{ site.image }}/20160310/7.png)选择React Native
