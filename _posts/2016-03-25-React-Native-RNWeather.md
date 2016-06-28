@@ -25,7 +25,7 @@ categories: React-Native
 
 #### NavigatorIOS
 
-应为我们要使用到`NavigatorIOS`所以index.ios.js作为工程的入口，虽然整个工程就两个文件。
+因为我们要使用到`NavigatorIOS`所以index.ios.js作为工程的入口，虽然整个工程就两个文件。
 
 创建查询天气文件`weatherView.js`
 
