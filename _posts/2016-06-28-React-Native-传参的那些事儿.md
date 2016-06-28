@@ -20,6 +20,7 @@ categories:	React-Nartive
 创建navigator根文件`rootView.js`&&demo不可少的`secondView.js`
 
 #### 自定义组件传参
+
 在React Native里面自定义组是必不可少的，接下来我们就讲一讲 如何来自定义一个组件
 
 在实际开发中Button用的是比较多的一种控件，可是React Native并没有直接提供Button而是提供了Button的许多零件让你来自己组装你想要的按钮。常用的两个核心零件TouchableHighlight和TouchableHighlight，至于两者的区别，在这里暂且保密。
