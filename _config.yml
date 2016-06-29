@@ -9,8 +9,7 @@
 title: Newfun
 email: newfun.email@qq.com
 description: > # this means to ignore newlines until "baseurl:"
-  为什么要写博客,梦想、技术、热爱。或许是不想让自己闲着,我怕闲下来手就犯贱,脸会不自觉的贴在镜子上,
-  手会不自觉的贴在脸上挤痘痘,94年正青春。</br>专注于React Native、iOS开发，欢迎交流。
+  为什么要写博客,梦想、技术、热爱。或许是不想让自己闲着,闲下来是浪费时间浪费生命,毕竟几年后我们是要在美国见的,有人说不想出国的程序员不是好程序员,这句话我TM竟然信了。94年正青春。</br>专注于React Native、iOS开发，欢迎交流。
   </br>--newfun.上海.2016年3月6日
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://yourdomain.com" # the base hostname & protocol for your site
