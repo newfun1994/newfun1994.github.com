@@ -75,7 +75,75 @@ github上有自定义按钮，你为什么还要自己造轮子呢，在特定�
 
 自定义组件传参over
 
+#### Navigator传参
 
-小编要干活了，晚上见。
+其实很简单啦，因为as same as上面的组件传参
+
+其实就是把要传的参数塞入component路由里面去。
+
+	//push to nextView
+	NextView(componentName) {
+		i++;
+		const {navigator} = this.props;
+		if (navigator) {
+			navigator.push({
+				name: 'componentName',
+				component: componentName,
+				params: {
+					param1: i,
+				}
+			});
+		}
+	}
+
+params1就是传递过去的参数。
+
+参数接收也是十分简单的和第一种情况一样`{this.props.param1}`
+
+#### Navigator回调
+
+在Navigator中没有提供参数回调的方法，但是我们可以采取其他手段实现回调，毕竟是js
+
+我采取的方案回调的原理就是在第一个页面传递一个方法到第二个页面，然后在pop的同时执行传递过来的方法。
+
+	//push to nextView
+	NextView(componentName) {
+		let _me = this;
+		const {navigator} = this.props;
+		if (navigator) {
+			navigator.push({
+				name: 'componentName',
+				component: componentName,
+				params: {
+					callback(param){
+						_me.setState({
+							callbackParam:param
+						});
+					}
+				}
+			});
+		}
+	}
+
+需要`注意`的是要将当前的`this` 赋值给 `_me` 然后传递 `_me` 下的方法,否则第二个界面会报错,应为this会被第二个界面当做自己的this,于是就redColor咯。
+
+	//pop back and callback
+	<TouchableOpacity
+		style={styles.button}
+		onPress={() => {
+			this.props.callback('this callback param!');
+			this.props.navigator.pop();
+			}
+		}
+	>
+		<Text style={{color:'#FFF', fontSize:17}}>返回</Text>
+	</TouchableOpacity>
+
+
+如有疑问请联系小编。
+
+--newfun.上海.2016年6月29日
+
+
 
 demo请见 [React-Native-Example](https://github.com/newfun1994/React-Native-Example)
