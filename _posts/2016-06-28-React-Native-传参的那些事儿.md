@@ -2,7 +2,7 @@
 layout: post
 title:	"React Native 传参的那些事儿"
 data:	2016-06-28 8:22:43 +0800
-categories:	React-Nartive
+categories:	React-Native
 ---
 
 本文主要介绍了在React-Native下三种常用的传参方式：
